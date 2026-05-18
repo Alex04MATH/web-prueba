@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prueba GitHub Pages</title>
+    <style>
+        body {
+            font-family: system-ui, sans-serif;
+            text-align: center;
+            padding: 40px 20px;
+            background: #f8f9fa;
+            color: #333;
+        }
+
+        .card {
+            max-width: 600px;
+            margin: auto;
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            color: #2d3436;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            margin: 15px 0;
+        }
+
+        input,
+        button {
+            padding: 10px 15px;
+            margin: 8px 0;
+            font-size: 16px;
+            border-radius: 6px;
+            border: 1px solid #ccc;
+        }
+
+        button {
+            background: #0984e3;
+            color: white;
+            border: none;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        button:hover {
+            background: #0769b5;
+        }
+
+        .btn-reset {
+            background: #d63031;
+        }
+
+        .btn-reset:hover {
+            background: #b71c1c;
+        }
+
+        #resultado {
+            font-weight: bold;
+            margin-top: 15px;
+            font-size: 18px;
+            min-height: 24px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="card">
+        <h1>🌐 ¡Funciona! Sitio en GitHub Pages</h1>
+        <p>Este es un ejemplo estático listo para probar el hosting. Puedes editar texto, imágenes o agregar más juegos.
+        </p>
+        <!-- Cambia esta URL por una imagen tuya si lo deseas -->
+        <img src="https://via.placeholder.com/500x250/0984e3/ffffff?text=Tu+Imagen+Aquí" alt="Ejemplo">
+        <hr style="margin: 20px 0; border: 0; border-top: 1px solid #eee;">
+
+        <h2>🎮 Mini-juego: Adivina el Número</h2>
+        <p>He pensado un número del 1 al 10. ¿Puedes adivinarlo?</p>
+        <input type="number" id="guess" min="1" max="10" placeholder="1-10">
+        <br>
+        <button onclick="checkGuess()">Probar</button>
+        <button class="btn-reset" onclick="resetGame()">Nuevo número</button>
+        <p id="resultado"></p>
+    </div>
+
+    <script>
+        let target = Math.floor(Math.random() * 10) + 1;
+
+        function checkGuess() {
+            const val = document.getElementById('guess').value;
+            const res = document.getElementById('resultado');
+            if (!val) { res.textContent = "⚠️ Escribe un número."; res.style.color = "#e17055"; return; }
+            const n = parseInt(val);
+            if (n === target) { res.textContent = "🎉 ¡Correcto! ¡Lo lograste!"; res.style.color = "#00b894"; }
+            else if (n < target) { res.textContent = "📈 Es más alto..."; res.style.color = "#0984e3"; }
+            else { res.textContent = "📉 Es más bajo..."; res.style.color = "#d63031"; }
+        }
+
+        function resetGame() {
+            target = Math.floor(Math.random() * 10) + 1;
+            document.getElementById('guess').value = '';
+            document.getElementById('resultado').textContent = '🔄 ¡Nuevo número! Intenta de nuevo.';
+            document.getElementById('resultado').style.color = '#636e72';
+        }
+    </script>
+</body>
+
+</html>
